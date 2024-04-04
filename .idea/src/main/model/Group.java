@@ -5,11 +5,13 @@ import model.User;
 public class group {
 private int groupID;
 private String groupName;
+private Date date_created;
 private List<User> group_members;
 
-    public group(int groupID, String groupName, List<User> group_members) {
+    public group(int groupID, String groupName, date_created , List<User> group_members) {
         this.groupID = groupID;
         this.groupName = groupName;
+        this.date_created = date_created;
         this.group_members = group_members;
     }
 
@@ -35,5 +37,13 @@ private List<User> group_members;
 
     public void setGroup_members(List<User> group_members) {
         this.group_members = group_members;
+    }
+
+    public Date getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(Date date_created) {
+        this.date_created = date_created;
     }
 }

@@ -17,13 +17,34 @@ public class UserRepository{
         }
     }
 
-    public void addUser(){
-
+    public void addUser(User newUser) {
+        String query = "INSERT INTO users (id, username, email, number) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, newUser.getId());
+            statement.setString(2, newUser.getUsername());
+            statement.setString(3, newUser.getEmail());
+            statement.setInt(4, newUser.getPhone_number());
+            statement.executeUpdate();
+            System.out.println("User" + newUser.getUsername + "added successfully.");
+        }
     }
 
-    public void removeUser(){
-
+    public void updateUsername(String name, int userId){
+        String query = "UPDATE users SET username = ?, WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, name);
+            statement.setString(2, userId);
+            statement.executeUpdate();
+            System.out.println("User " + userId + " name updated to" + name " successfully.");
+        }
     }
 
+    //implement later
+    public void updateUserNumber(){
+    }
+
+    //implement later
+    public void updateUserEmail(){
+    }
 
 }
